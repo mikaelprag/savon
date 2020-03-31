@@ -92,7 +92,8 @@ module Savon
         :no_message_tag              => false,
         :follow_redirects            => false,
         :unwrap                      => false,
-        :host                        => nil
+        :host                        => nil,
+        :include_action_in_content_type => nil
       }
 
       options = defaults.merge(options)
@@ -114,6 +115,11 @@ module Savon
     # set different host for actions in WSDL
     def host(host)
       @options[:host] = host
+    end
+    
+    # include the action attribute in the Content-Type header
+    def include_action_in_content_type(include_action_in_content_type)
+      @options[:include_action_in_content_type] = include_action_in_content_type
     end
 
     # SOAP endpoint.

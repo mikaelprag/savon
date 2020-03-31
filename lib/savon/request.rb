@@ -104,6 +104,7 @@ module Savon
       @http_request.headers.merge!(headers) if headers
       @http_request.headers["SOAPAction"]   ||= %{"#{soap_action}"} if soap_action
       @http_request.headers["Content-Type"] ||= CONTENT_TYPE[@globals[:soap_version]] % @globals[:encoding]
+      @http_request.headers["Content-Type"] += ";action=#{soap_action}" if soap_action && @globals[:include_action_in_content_type]
     end
   end
 end
